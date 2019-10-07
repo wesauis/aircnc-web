@@ -4,16 +4,21 @@ import { RouteComponentProps } from 'react-router-dom';
 import api from '../../services/api';
 
 const Login: React.FC<RouteComponentProps> = props => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState<string>('');
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const res = await api.post('/sessions', { email });
-    const { id } = res.data;
+    const req = { email: email.trim() };
 
-    localStorage.setItem('aircnc.user_id', id);
+    if (!req.email) return;
 
+    const res = await api.post('/sessions', req);
+    const { _id } = res.data;
+
+    if (!_id) return;
+
+    localStorage.setItem('aircnc.user_id', _id);
     props.history.push('/dashboard');
   }
 
@@ -21,7 +26,7 @@ const Login: React.FC<RouteComponentProps> = props => {
     <>
       <p>
         Ofereça <strong>spots</strong> para programadores e encontre{' '}
-        <strong>talentos</strong> para sua empresa'
+        <strong>talentos</strong> para sua empresa
       </p>
 
       <form onSubmit={handleSubmit}>
