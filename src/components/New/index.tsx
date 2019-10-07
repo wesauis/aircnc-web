@@ -6,7 +6,7 @@ import './styles.css';
 import api from '../../services/api';
 
 const New: React.FC<RouteComponentProps> = props => {
-  const [thumbnail, setThumbnail] = useState<Blob | null>(null);
+  const [thumbnail, setThumbnail] = useState<Blob | null>();
   const [company, setCompany] = useState<string>('');
   const [techs, setTechs] = useState<string>('');
   const [price, setPrice] = useState<string>('');
