@@ -5,7 +5,7 @@
 
 > you will need: 
 - Node.js
-- [backend developed in the week](//github.com/wesauis/rocketseat-omnistack-9-backend)
+- [backend developed in the week](//github.com/wesauis/aircnc-backend)
 - setup backend url in .env file
     
 ### Available Scripts
